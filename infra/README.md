@@ -20,7 +20,7 @@ This folder contains Bicep templates for provisioning Azure resources for the Za
 │                                                                     │
 │  ┌──────────────────────────────────────────────────────────────┐  │
 │  │                    Azure AI Foundry                           │  │
-│  │              (GPT-4 + Phi-3 mini deployments)                 │  │
+│  │              (GPT-4 + Phi-4-mini-reasoning deployments)        │  │
 │  └──────────────────────────────────────────────────────────────┘  │
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
@@ -35,7 +35,7 @@ This folder contains Bicep templates for provisioning Azure resources for the Za
 | App Service | Web App for Containers | - | Run application container |
 | Application Insights | Monitoring | Pay-as-you-go | Application monitoring |
 | Log Analytics | Workspace | PerGB2018 | Log storage |
-| Azure AI Foundry | Cognitive Services | S0 | AI model access (GPT-4, Phi) |
+| Azure AI Foundry | Cognitive Services | S0 | AI model access (GPT-4, Phi-4-mini-reasoning) |
 
 ## Modules
 
