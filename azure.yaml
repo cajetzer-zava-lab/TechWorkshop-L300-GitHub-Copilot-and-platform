@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: zavastore
+metadata:
+  template: azd-init
+
+# Azure Developer CLI configuration for ZavaStorefront
+# Deploy using: azd up
+
+infra:
+  provider: bicep
+  path: ./infra
+  module: main
+
+# Required: Set the Azure location for subscription-level deployments
+env:
+  AZURE_LOCATION: westus3
+
+services:
+  web:
+    project: ./src
+    host: containerapp
+    language: dotnet
+    docker:
+      path: ./src/Dockerfile
+      context: ./src
+
+# Hooks for custom deployment steps
+hooks:
+  # Build and push container image to ACR (cloud build - no local Docker required)
+  predeploy:
+    shell: pwsh
+    run: |
+      $acrName = azd env get-value AZURE_CONTAINER_REGISTRY_NAME
+      $imageTag = if ($env:IMAGE_TAG) { $env:IMAGE_TAG } else { "latest" }
+      Write-Host "Building image in ACR: $acrName"
+      az acr build --registry $acrName --image zavastore:$imageTag ./src
+    continueOnError: false
+
+# Pipeline configuration
+pipeline:
+  provider: github
