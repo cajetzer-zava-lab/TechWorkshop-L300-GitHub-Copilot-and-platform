@@ -1,0 +1,29 @@
+# Build outputs
+bin/
+obj/
+
+# IDE and editor files
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+!README.md
+
+# Test artifacts
+TestResults/
+coverage/
+
+# Local settings
+appsettings.Development.json
+appsettings.Local.json
+
+# Temporary files
+*.tmp
+*.log
